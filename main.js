@@ -3,7 +3,7 @@ var text, sentences, code;
 function throwError(error) {
     alert(error);
 }
-document.addEventListener('DOMContentLoaded') {
+document.addEventListener('DOMContentLoaded', function () {
     document.getElementsByTagName('button')[0].onClick = function () {
         text = document.getElementsByTagName('textArea')[0].value;
         sentences = text.split(".");
@@ -13,4 +13,4 @@ document.addEventListener('DOMContentLoaded') {
                 
             });
     }
-}
+});
