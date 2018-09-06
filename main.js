@@ -1,6 +1,7 @@
 'use strict';
 var text, sentences, code;
 function throwError(error) {
+    alert(error);
 }
 document.addEventListener('DOMContentLoaded') {
     document.getElementsByTagName('button')[0].onClick = function () {
