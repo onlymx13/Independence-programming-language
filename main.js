@@ -1,5 +1,5 @@
 'use strict';
-var text, sentences;
+var text, sentences, sections;
 var code = '';
 var allMen;
 function throwError(error) {
@@ -17,6 +17,10 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('error').innerHTML = '';
         nocompile = false;
         text = document.getElementsByTagName('textArea')[0].value;
+        sections = text.split(/Introduction|Preamble|Indictment|Denunciation|Conclusion/);
+        sections.forEach (function(element) {
+            element = element.split(".");
+        });
         sentences = text.split(".");
         if (!/The unanimous Declaration of the (zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen) united States? of America/.test(sentences[0])){
             throwError("Error: Invalid declaration of 'independence'");
