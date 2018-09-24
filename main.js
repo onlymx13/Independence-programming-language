@@ -44,6 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
             throwError("Error: No declaration that these united Colonies are Free and Independent States");
         }
         do {
-            run(sentences[++programCounter];
+            run(sentences[++programCounter]);
         } while (!endFlag);
 });
