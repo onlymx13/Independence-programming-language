@@ -46,4 +46,5 @@ document.addEventListener('DOMContentLoaded', function () {
         do {
             run(sentences[++programCounter]);
         } while (!endFlag);
+    }
 });
