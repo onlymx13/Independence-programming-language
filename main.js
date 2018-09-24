@@ -25,7 +25,7 @@ function constant(number) {
     return number;
 }
 function run(line) {
-    if (line === "These united Colonies are, and of Right ought to be, Free and Independent States.") {
+    if (line === "These united Colonies are, and of Right ought to be, Free and Independent States") {
         return endFlag = true;   
     }
     if (line.slice(0,46) === "We hold these Truths to be self-evident: that") {
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!/The unanimous Declaration of the (zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen) united States? of America/.test(sentences[0])){
             throwError("Error: Invalid declaration of 'independence'");
         }
-        if (!sentences.includes("These united Colonies are, and of Right ought to be, Free and Independent States.")) {
+        if (!sentences.includes("These united Colonies are, and of Right ought to be, Free and Independent States")) {
             throwError("Error: No declaration that these united Colonies are Free and Independent States");
         }
         while (!endFlag) {
