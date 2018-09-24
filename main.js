@@ -8,7 +8,7 @@ function throwError(error) {
     endFlag = true;
 }
 function constant(number) {
-    if (number.slice(0,35) !=== "certain unalienable rights, such as") {
+    if (number.slice(0,35) !== "certain unalienable rights, such as") {
         throwError("Error: constant not beginning with 'certain unalienable rights, such as'");
     }
     number = number.slice(35);
