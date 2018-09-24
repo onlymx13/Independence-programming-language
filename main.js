@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!sentences.includes("These united Colonies are, and of Right ought to be, Free and Independent States.")) {
             throwError("Error: No declaration that these united Colonies are Free and Independent States");
         }
-        do {
+        while (!endFlag) {
             run(sentences[++programCounter]);
-        } while (!endFlag);
+        };
     }
 });
