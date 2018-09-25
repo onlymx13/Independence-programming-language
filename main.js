@@ -12,16 +12,17 @@ function constant(number) {
         throwError("Error: constant not beginning with 'certain unalienable rights, such as'");
     }
     number = number.slice(35);
-    number.replace("Life",1);
-    number.replace("Liberty",2);
-    number.replace("Pursuit of Happiness",5);
-    number.replace("Property",10);
-    number.replace(", and","+");
-    number.replace(", ",'+');
-    number.replace("no ","-1*");
-    number.replace("lack of ","-1*");
-    number.replace("good ","2*");
-    number.replace("great ","4*");
+    number = number.replace("Life",1);
+    number = number.replace("Liberty",2);
+    number = number.replace("Pursuit of Happiness",5);
+    number = number.replace("Property",10);
+    number = number.replace(", and","+");
+    number = number.replace(" and","+");
+    number = number.replace(", ",'+');
+    number = number.replace("no ","-1*");
+    number = number.replace("lack of ","-1*");
+    number = number.replace("good ","2*");
+    number = number.replace("great ","4*");
     return number;
 }
 function run(line) {
