@@ -34,6 +34,10 @@ function run(line) {
            return allMen = constant(line.slice(88));
        }
     }
+    if (line === "Let Facts be submitted to a candid World") {
+          document.getElementById('output').value += (allMen + '\n');
+    }
+    throwError('Error: Syntax at line ' + line); return;
 }
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementsByTagName('button')[0].onclick = function () {
