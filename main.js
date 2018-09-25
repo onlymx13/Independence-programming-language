@@ -38,9 +38,9 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementsByTagName('button')[0].onclick = function () {
         document.getElementById('error').innerHTML = '';
         text = document.getElementsByTagName('textArea')[0].value;
-        sentences = text.split(".");
+        sentences = text.split(".\n");
         sentences.forEach(function (element) {
-            element = element.replace('\n','');
+         //   element = element.replace('\n','');
         });
         if (!/The unanimous Declaration of the (zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen) united States? of America/.test(sentences[0])){
             throwError("Error: Invalid declaration of 'independence'");
