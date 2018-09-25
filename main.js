@@ -25,7 +25,7 @@ function constant(number) {
     return number;
 }
 function run(line) {
-    if (line === "These united Colonies are, and of Right ought to be, Free and Independent States") {
+    if (line === "These united Colonies are, and of Right ought to be Free and Independent States") {
         return endFlag = true;   
     }
     if (line.slice(0,46) === "We hold these Truths to be self-evident: that") {
