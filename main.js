@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementsByTagName('button')[0].onclick = function () {
         document.getElementById('error').innerHTML = '';
         text = document.getElementsByTagName('textArea')[0].value;
-        sentences = text.split(".");
+        sentences = text.split(".\n");
         sentences.forEach(function (element) {
             element = element.replace(/\r?\n|\r/g,'');
         });
