@@ -1,0 +1,42 @@
+﻿Similar to SPL
+If it doesn’t start with “The unanimous Declaration of the thirteen united States of America” the compiler throws “Error: invalid declaration of ‘Independence’”. The number thirteen is replaced with the number of variables used and States is made singular with 1. You may use 0.
+You can set variables with “We hold these Truths to be self-evident: that” variable “are endowed by their Creator with” constant.
+Constants: formed in binary. Life=1, Liberty=2, Pursuit of Happiness=5, Property = 10. Add “good” to a constant to double it and “great” to quadruple it. Add “no” or “lack of” to negate it. All constants are preceded with “certain unalienable rights, such as” and can be added via comma separation. Multiplication: the Product of (,). May chain.
+Division with floor: the Factors forming (,).
+Modulo: the remaining Issue of (value). May only be applied with the accumulator as the dividend.
+Variables: “all men” is the special accumulator. The names of the thirteen colonies can also be used, like “the People of Massachusetts”.
+If statement: “When in the Course of human Events”
+Condition: is/are created equal, have/has means equal to.
+Label: Introduction, Preamble, Indictment, Denunciation, Conclusion
+Jump: See the [Introduction] of this Document.
+Print: To print the contents of the accumulator, “let Facts be submitted to a candid World” will be used. It’s num. to print as char, use “we should declare the causes which impel us to the separation.” Chars act as ASCII.
+Input: To receive input, use “We, therefore, appeal to the Supreme Judge of the world for the rectitude of our intentions.”
+End: To end the program, state “These united Colonies are, and of Right ought to be Free and Independent States.”
+The comments here are for reference, comments do not really exist! Example code (prints DoI)
+The unanimous Declaration of the zero united States of America. //set up program with 0 local variables
+Introduction //label
+We hold these Truths to be self-evident: that all men are endowed by their Creator with certain unalienable Rights, such as great Property, good Property, and great Liberty. We should declare the causes which impel us to the separation. //set all men to D, print D
+Preamble
+We hold these Truths to be self-evident: that all men are endowed by their Creator with certain unalienable Rights, such as great Property, great Property, good Property, Property, and Life. We should declare the causes which impel us to the separation. //print o
+Indictment We hold these Truths to be self-evident: that all men are endowed by their Creator with certain unalienable Rights, such as great Property, good Property, Property, great Liberty, and the Pursuit of Happiness. We should declare the causes which impel us to the separation. //print I
+These united Colonies are, and of Right ought to be Free and Independent States. //end program
+
+
+
+Prime number code:
+The unanimous Declaration of the one united State of America.
+Introduction
+We hold these Truths to be self-evident: that all men are endowed by their Creator with certain unalienable Rights, such as Liberty. //set all men to 2
+Let Facts be submitted to a candid World. //print 2
+Preamble
+We hold these Truths to be self-evident: that all men are endowed by their Creator with certain unalienable Rights, such as all men and Life. //increment all men
+We hold these Truths to be self-evident: that the People of Pennsylvania are endowed by their Creator with certain unalienable Rights, such as Life. //set Pennsylvania to 1
+Indictment
+We hold these Truths to be self-evident: that the People of Pennsylvania are endowed by their Creator with certain unalienable Rights, such as the People of Pennsylvania and Life. //increment Pennsylvania
+When in the Course of human Events all men are created equal to the People of Pennsylvania, see the Denunciation of this Document. //if number=divisor and was never divided, it is prime, so go to print label
+When in the Course of human Events the remaining Issue of the People of Pennsylvania is created equal to certain unalienable Rights, such as Life and lack of Life, see the Preamble to this Document. // if all men mod Pennsylvania == 0, go to preamble and try another number, ours was composite
+See the Indictment to this Document. //continue loop
+Denunciation
+Let Facts be submitted to a candid World. //print our prime
+See the Preamble to this Document. //try another number
+These united Colonies are, and of Right ought to be, Free and Independent States. //never used
