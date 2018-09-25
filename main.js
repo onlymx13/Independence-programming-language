@@ -23,7 +23,7 @@ function constant(number) {
     number = number.replace(/lack of /g,"-1*");
     number = number.replace(/good /g,"2*");
     number = number.replace(/great /g,"4*");
-    return Function(number);
+    return eval(number);
 }
 function run(line) {
     if (line === "These united Colonies are, and of Right ought to be Free and Independent States") {
