@@ -29,7 +29,7 @@ function run(line) {
     if (line === "These united Colonies are, and of Right ought to be Free and Independent States") {
         return endFlag = true;   
     }
-    if (line.slice(0,46) === "We hold these Truths to be self-evident: that") {
+    if (line.slice(0,46) === "We hold these Truths to be self-evident: that ") {
        if (line.slice(46,88) === "all men are endowed by their Creator with ") {
            return allMen = constant(line.slice(88));
        }
