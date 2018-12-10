@@ -41,7 +41,7 @@ function run(line) {
        }
     }
     if (line === "Let Facts be submitted to a candid World") {
-          document.getElementById('output').value += (allMen + '\n');
+          document.getElementById('output').innerHTML += (allMen + '\n');
     }
     throwError('Error: Syntax at line ' + sentences.indexOf(line)); return;
 }
