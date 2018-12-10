@@ -9,7 +9,7 @@ function throwError(error) {
 function constant(number) {
     var oldNumber = number;
     if (!/^certain unalienable [Rr]ights, such as$/.test(number.slice(0,35))) {
-        throwError("Error: constant not beginning with 'certain unalienable rights, such as'");
+        return throwError("Error: constant not beginning with 'certain unalienable rights, such as'");
     }
     number = number.slice(35);
     number = number.replace(/Life/g,1);
@@ -24,7 +24,7 @@ function constant(number) {
     number = number.replace(/good /g,"2*");
     number = number.replace(/great /g,"4*");
     try {
-        return Function("return "+number);
+        return Function("return "+number).call(this);
     }
     catch (err) {
         return throwError(err + " when calculating the value of " + oldNumber);
@@ -40,10 +40,8 @@ function run(line) {
            return allMen = constant(line.slice(88));
        }
     }
-    if (line === "Let Facts be submitted to a candid World") {
-          document.getElementById('output').innerHTML += (allMen + '\n');
-    }
-    throwError('Error: Syntax at line ' + sentences.indexOf(line)); return;
+    if (line === "Let Facts be submitted to a candid World") return document.getElementById('output').innerHTML += (allMen + '\n');
+    return throwError('Error: Syntax at line ' + sentences.indexOf(line) + 1);
 }
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementsByTagName('button')[0].onclick = function () {
