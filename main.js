@@ -25,6 +25,7 @@ function constant(number) {
     return eval(number);
 }
 function run(line) {
+    if (!line) return;
     if (/These united Colonies are,? and of Right ought to be,? Free and Independent States/.test(line)) {
         return endFlag = true;   
     }
