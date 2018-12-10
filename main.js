@@ -4,10 +4,11 @@ var allMen;
 var endFlag = false;
 function throwError(error) {
     document.getElementById('error').innerHTML = error;
-    endFlag = true;
+    return endFlag = true;
 }
 function constant(number) {
-    if (number.slice(0,35) !== "certain unalienable rights, such as") {
+    var oldNumber = number;
+    if (!/^certain unalienable [Rr]ights, such as$/.test(number.slice(0,35))) {
         throwError("Error: constant not beginning with 'certain unalienable rights, such as'");
     }
     number = number.slice(35);
@@ -22,7 +23,12 @@ function constant(number) {
     number = number.replace(/lack of /g,"-1*");
     number = number.replace(/good /g,"2*");
     number = number.replace(/great /g,"4*");
-    return Function("return "+number);
+    try {
+        return Function("return "+number);
+    }
+    catch (err) {
+        return throwError(err + " when calculating the value of " + oldNumber);
+    }
 }
 function run(line) {
     if (!line) return;
@@ -47,10 +53,10 @@ document.addEventListener('DOMContentLoaded', function () {
         sentences = sentences.map(function (element) {
             return element.replace(/\n|↵/,'');
         });
-        if (!sentences.some(function(element) {return /These united Colonies are,? and of Right ought to be,? Free and Independent States/.test(element)})) {
+        if (!sentences.some(function(element) {return /^These united Colonies are,? and of Right ought to be,? Free and Independent States$/.test(element)})) {
             throwError("Error: No declaration that these united Colonies are Free and Independent States");
         }
-        if (!/The unanimous Declaration of the (zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen) united States? of America/.test(sentences[0])){
+        if (!/^The unanimous Declaration of the (zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen) united States? of America/.test(sentences[0])){
             throwError("Error: Invalid declaration of 'independence'");
         }
         for(var programCounter = 1; programCounter < sentences.length; programCounter++) {
