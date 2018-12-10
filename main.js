@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
         text = document.getElementsByTagName('textArea')[0].value;
         sentences = text.split(".");
         sentences = sentences.map(function (element) {
-            return element.replace(/\n|↵/,'');
+            return element.replace(/\n|↵/g,'');
         });
         if (!sentences.some(function(element) {return /^These united Colonies are,? and of Right ought to be,? Free and Independent States$/.test(element)})) {
             throwError("Error: No declaration that these united Colonies are Free and Independent States");
