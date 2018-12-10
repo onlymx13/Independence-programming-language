@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
         sentences = sentences.map(function (element) {
             return element.replace(/\n|↵/,'');
         });
-        if (!sentences.includes(/These united Colonies are,? and of Right ought to be,? Free and Independent States/)) {
+        if (!sentences.some(function(element) {return /These united Colonies are,? and of Right ought to be,? Free and Independent States/.test(element)})) {
             throwError("Error: No declaration that these united Colonies are Free and Independent States");
         }
         if (!/The unanimous Declaration of the (zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen) united States? of America/.test(sentences[0])){
