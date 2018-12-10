@@ -1,5 +1,5 @@
 'use strict';
-var text, sentences;
+var sentences;
 var allMen;
 var endFlag = false;
 function throwError(error) {
@@ -8,7 +8,7 @@ function throwError(error) {
 }
 function constant(number) {
     var oldNumber = number;
-    if (!/^certain unalienable [Rr]ights, such as$/.test(number.slice(0,35))) {
+    if (!/^certain unalienable [Rr]ights, such as/.test(number)) {
         return throwError("Error: constant not beginning with 'certain unalienable rights, such as'");
     }
     number = number.slice(35);
@@ -27,7 +27,7 @@ function constant(number) {
         return Function("return "+number).call(this);
     }
     catch (err) {
-        return throwError(err + " when calculating the value of " + oldNumber);
+        return throwError(err + " encountered when trying to calculate the value of " + oldNumber);
     }
 }
 function run(line) {
@@ -36,9 +36,7 @@ function run(line) {
         return endFlag = true;   
     }
     if (line.slice(0,46) === "We hold these Truths to be self-evident: that ") {
-       if (line.slice(46,88) === "all men are endowed by their Creator with ") {
-           return allMen = constant(line.slice(88));
-       }
+       if (line.slice(46,88) === "all men are endowed by their Creator with ") return allMen = constant(line.slice(88));
     }
     if (line === "Let Facts be submitted to a candid World") return document.getElementById('output').innerHTML += (allMen + '\n');
     return throwError('Error: Syntax at line ' + sentences.indexOf(line) + 1);
@@ -46,17 +44,9 @@ function run(line) {
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementsByTagName('button')[0].onclick = function () {
         document.getElementById('error').innerHTML = '';
-        text = document.getElementsByTagName('textArea')[0].value;
-        sentences = text.split(".");
-        sentences = sentences.map(function (element) {
-            return element.replace(/\n|↵/g,'');
-        });
-        if (!sentences.some(function(element) {return /^These united Colonies are,? and of Right ought to be,? Free and Independent States$/.test(element)})) {
-            throwError("Error: No declaration that these united Colonies are Free and Independent States");
-        }
-        if (!/^The unanimous Declaration of the (zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen) united States? of America/.test(sentences[0])){
-            throwError("Error: Invalid declaration of 'independence'");
-        }
+        sentences = document.getElementsByTagName('textArea')[0].value.split(".").map(element => element.replace(/\n/g,''));
+        if (!sentences.some(function(element) {return /^These united Colonies are,? and of Right ought to be,? Free and Independent States$/.test(element)})) throwError("Error: No declaration that these united Colonies are Free and Independent States");
+        if (!/^The unanimous Declaration of the (zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen) united States? of America/.test(sentences[0])) throwError("Error: Invalid declaration of 'independence'");
         for(var programCounter = 1; programCounter < sentences.length; programCounter++) {
             run(sentences[programCounter]);
             if (endFlag) return;
