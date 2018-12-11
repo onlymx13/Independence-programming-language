@@ -14,6 +14,7 @@ function constant(number) {
         return throwError("Error: constant not beginning with 'certain unalienable rights, such as'");
     }
     number = number.slice(35);
+    number = number.replace(/all men/g,'allMen');
     number = number.replace(/Life/g,1);
     number = number.replace(/Liberty/g,2);
     number = number.replace(/Pursuit of Happiness/g,5);
