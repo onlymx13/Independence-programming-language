@@ -45,8 +45,11 @@ function run(line) {
        if (line.slice(46,107) === "the People of Pennsylvania are endowed by their Creator with ") return Pennsylvania = constant(line.slice(107));
     }
     if (line === "Let Facts be submitted to a candid World.") {
-        document.getElementById('output').innerHTML += (allMen + '\n');
+        document.getElementById('output').innerHTML += (allMen + '<br />');
         return;
+    }
+    if (line === "We should declare the causes which impel us to the separation.") {
+        document.getElementById('output').innerHTML += (String.fromCharCode(allMen) + '<br />');
     }
     return throwError('Error: Syntax at line ' + (sentences.indexOf(line) + 1));
 }
