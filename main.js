@@ -37,6 +37,7 @@ function constant(number) {
     }
 }
 function run(line) {
+    if (line.indexOf('/\/') !== -1) line = line.slice(0, line.indexOf('/\/'));
     if (!line) return;
     if (/^Introduction|Preamble|Indictment|Denunciation|Conclusion$/.test(line)) return;
     if (/^These united Colonies are,? and of Right ought to be,? Free and Independent States.$/.test(line)) return document.getElementById('output').innerHTML += ('done\n');
