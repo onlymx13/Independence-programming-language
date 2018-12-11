@@ -8,6 +8,7 @@ function throwError(error) {
 }
 function constant(number) {
     var oldNumber = number;
+    if (number.includes('(') || number.includes('{')) return throwError("Error: stop trying to execute arbitrary code.");
     if (!/^certain unalienable [Rr]ights, such as/.test(number)) {
         return throwError("Error: constant not beginning with 'certain unalienable rights, such as'");
     }
