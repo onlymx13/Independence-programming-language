@@ -40,7 +40,10 @@ function run(line) {
     if (/^We hold these [tT]ruths to be self-evident: that /.test(line)) {
        if (line.slice(46,88) === "all men are endowed by their Creator with ") return allMen = constant(line.slice(88));
     }
-    if (line === "Let Facts be submitted to a candid World") return document.getElementById('output').innerHTML += (allMen + '\n');
+    if (line === "Let Facts be submitted to a candid World") {
+        document.getElementById('output').innerHTML += (allMen + '\n');
+        return;
+    }
     return throwError('Error: Syntax at line ' + (sentences.indexOf(line) + 1));
 }
 document.addEventListener('DOMContentLoaded', function () {
