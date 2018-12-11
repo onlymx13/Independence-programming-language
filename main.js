@@ -36,6 +36,7 @@ function constant(number) {
 }
 function run(line) {
     if (!line) return;
+    if (/^Introduction|Preamble|Indictment|Denunciation|Conclusion$/.test(line)) return;
     if (/^These united Colonies are,? and of Right ought to be,? Free and Independent States.$/.test(line)) {
         document.getElementById('output').innerHTML += ('done\n');
         return endFlag = true;   
