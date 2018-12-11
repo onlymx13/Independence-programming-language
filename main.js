@@ -1,6 +1,7 @@
 'use strict';
 var sentences;
 var allMen;
+var Pennsylvania;
 var endFlag = false;
 function throwError(error) {
     document.getElementById('error').innerHTML = error;
@@ -15,6 +16,7 @@ function constant(number) {
     }
     number = number.slice(35);
     number = number.replace(/all men/g,'allMen');
+    number = number.replace(/the People of Pennsylvania/g,'Pennsylvania');
     number = number.replace(/Life/g,1);
     number = number.replace(/Liberty/g,2);
     number = number.replace(/Pursuit of Happiness/g,5);
@@ -39,7 +41,8 @@ function run(line) {
     if (/^Introduction|Preamble|Indictment|Denunciation|Conclusion$/.test(line)) return;
     if (/^These united Colonies are,? and of Right ought to be,? Free and Independent States.$/.test(line)) return document.getElementById('output').innerHTML += ('done\n');
     if (/^We hold these [tT]ruths to be self-evident: that /.test(line)) {
-       if (line.slice(46,88) === "all men are endowed by their Creator with ") return allMen = constant(line.slice(88));
+       if (line.slice(46, 88) === "all men are endowed by their Creator with ") return allMen = constant(line.slice(88));
+       if (line.slice(46,107) === "the People of Pennsylvania are endowed by their Creator with ") return Pennsylvania = constant(line.slice(107));
     }
     if (line === "Let Facts be submitted to a candid World.") {
         document.getElementById('output').innerHTML += (allMen + '\n');
@@ -50,6 +53,7 @@ function run(line) {
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementsByTagName('button')[0].onclick = function () {
         var allMen = 0;
+        var Pennsylvania = 0;
         document.getElementById('error').innerHTML = '';
         sentences = document.getElementsByTagName('textArea')[0].value.split("\n").map(element => element.replace(/\n/g,''));
         if (!sentences.some(function(element) {return /^These united Colonies are,? and of Right ought to be,? Free and Independent States.$/.test(element)})) throwError("Error: No declaration that these united Colonies are Free and Independent States");
@@ -63,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
         while (programCounter < sentences.length) {
             run(sentences[programCounter++]);
             if (endFlag) {
-               document.getElementById('output').innerHTML += 'break occured';
+                //document.getElementById('output').innerHTML += 'break occured';
                 break;
             };
         };
