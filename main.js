@@ -41,7 +41,7 @@ function run(line) {
        if (line.slice(46,88) === "all men are endowed by their Creator with ") return allMen = constant(line.slice(88));
     }
     if (line === "Let Facts be submitted to a candid World") return document.getElementById('output').innerHTML += (allMen + '\n');
-    return throwError('Error: Syntax at line ' + sentences.indexOf(line) + 1);
+    return throwError('Error: Syntax at line ' + (sentences.indexOf(line) + 1));
 }
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementsByTagName('button')[0].onclick = function () {
