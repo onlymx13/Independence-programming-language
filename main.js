@@ -8,7 +8,7 @@ function throwError(error) {
     return endFlag = true;
 }
 function constant(number) {
-    if (number.charAt(number.length - 1) = '.') number === number.slice(0, -1);
+    if (number.charAt(number.length - 1) === '.') number = number.slice(0, -1);
     var oldNumber = number;
     if (number.includes('(') || number.includes('{')) return throwError("Error: stop trying to execute arbitrary code.");
     if (!/^certain unalienable [Rr]ights, such as/.test(number)) {
