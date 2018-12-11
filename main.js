@@ -8,7 +8,7 @@ function throwError(error) {
     return endFlag = true;
 }
 function constant(number) {
-    number = number.slice(0, -1);
+    if (number.charAt(number.length - 1) = '.') number = number.slice(0, -1);
     var oldNumber = number;
     if (number.includes('(') || number.includes('{')) return throwError("Error: stop trying to execute arbitrary code.");
     if (!/^certain unalienable [Rr]ights, such as/.test(number)) {
@@ -61,6 +61,9 @@ document.addEventListener('DOMContentLoaded', function () {
         sentences = document.getElementsByTagName('textArea')[0].value.split("\n").map(element => element.replace(/\n/g,''));
         sentences.forEach(function(sentence, index) {
             if (sentence.indexOf('/\/') !== -1) sentences[index] = sentence.slice(0, sentence.indexOf('/\/'));
+            while (sentences[index].charAt(sentences[index].length - 1) === ' ') {
+                sentences[index] = sentences[index].slice(0, -1);
+            }
         });
         if (!sentences.some(function(element) {return /^These united Colonies are,? and of Right ought to be,? Free and Independent States.$/.test(element)})) throwError("Error: No declaration that these united Colonies are Free and Independent States");
         if (!/^The unanimous Declaration of the (zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen) united States? of America./.test(sentences[0])) throwError("Error: Invalid declaration of 'independence'");
