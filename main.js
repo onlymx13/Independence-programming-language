@@ -35,7 +35,7 @@ function run(line) {
     if (/These united Colonies are,? and of Right ought to be,? Free and Independent States/.test(line)) {
         return endFlag = true;   
     }
-    if (line.slice(0,46) === "We hold these Truths to be self-evident: that ") {
+    if (/^We hold these [tT]ruths to be self-evident: that /.test(line)) {
        if (line.slice(46,88) === "all men are endowed by their Creator with ") return allMen = constant(line.slice(88));
     }
     if (line === "Let Facts be submitted to a candid World") return document.getElementById('output').innerHTML += (allMen + '\n');
