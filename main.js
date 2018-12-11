@@ -24,6 +24,7 @@ function constant(number) {
     number = number.replace(/lack of /g,"-1*");
     number = number.replace(/good /g,"2*");
     number = number.replace(/great /g,"4*");
+    number = number.replace(/the/g,"");
     try {
         return Function("return "+number).call(this);
     }
