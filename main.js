@@ -64,7 +64,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var programCounter = 1;
         while (programCounter < sentences.length) {
             run(sentences[programCounter++]);
-            if (endFlag) break;
+            if (endFlag) {
+               document.getElementById('output').innerHTML += 'break occured';
+                break;
+            };
         };
     }
 });
