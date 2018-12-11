@@ -36,7 +36,8 @@ function constant(number) {
 }
 function run(line) {
     if (!line) return;
-    if (/These united Colonies are,? and of Right ought to be,? Free and Independent States./.test(line)) {
+    if (/^These united Colonies are,? and of Right ought to be,? Free and Independent States.$/.test(line)) {
+        document.getElementById('output').innerHTML += ('done\n');
         return endFlag = true;   
     }
     if (/^We hold these [tT]ruths to be self-evident: that /.test(line)) {
