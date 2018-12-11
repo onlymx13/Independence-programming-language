@@ -37,7 +37,6 @@ function constant(number) {
     }
 }
 function run(line) {
-    if (line.indexOf('/\/') !== -1) line = line.slice(0, line.indexOf('/\/'));
     if (!line) return;
     if (/^Introduction|Preamble|Indictment|Denunciation|Conclusion$/.test(line)) return;
     if (/^These united Colonies are,? and of Right ought to be,? Free and Independent States.$/.test(line)) return document.getElementById('output').innerHTML += ('done\n');
@@ -57,6 +56,9 @@ document.addEventListener('DOMContentLoaded', function () {
         var Pennsylvania = 0;
         document.getElementById('error').innerHTML = '';
         sentences = document.getElementsByTagName('textArea')[0].value.split("\n").map(element => element.replace(/\n/g,''));
+        sentences.forEach(function(sentence, index) {
+            if (sentence.indexOf('/\/') !== -1) sentences[index] = sentence.slice(0, sentence.indexOf('/\/'));
+        });
         if (!sentences.some(function(element) {return /^These united Colonies are,? and of Right ought to be,? Free and Independent States.$/.test(element)})) throwError("Error: No declaration that these united Colonies are Free and Independent States");
         if (!/^The unanimous Declaration of the (zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen) united States? of America./.test(sentences[0])) throwError("Error: Invalid declaration of 'independence'");
         var introduction = sentences.indexOf("Introduction"); //these vars will be -1 if it's not in there
