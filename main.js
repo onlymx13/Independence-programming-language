@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
         while (programCounter < sentences.length) {
             run(sentences[programCounter++]);
             if (endFlag) {
-                //document.getElementById('output').innerHTML += 'break occured';
+                document.getElementById('output').innerHTML += 'break occured';
                 break;
             };
         };
