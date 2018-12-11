@@ -7,6 +7,7 @@ function throwError(error) {
     return endFlag = true;
 }
 function constant(number) {
+    number = number.slice(0, -1);
     var oldNumber = number;
     if (number.includes('(') || number.includes('{')) return throwError("Error: stop trying to execute arbitrary code.");
     if (!/^certain unalienable [Rr]ights, such as/.test(number)) {
@@ -34,13 +35,13 @@ function constant(number) {
 }
 function run(line) {
     if (!line) return;
-    if (/These united Colonies are,? and of Right ought to be,? Free and Independent States/.test(line)) {
+    if (/These united Colonies are,? and of Right ought to be,? Free and Independent States./.test(line)) {
         return endFlag = true;   
     }
     if (/^We hold these [tT]ruths to be self-evident: that /.test(line)) {
        if (line.slice(46,88) === "all men are endowed by their Creator with ") return allMen = constant(line.slice(88));
     }
-    if (line === "Let Facts be submitted to a candid World") {
+    if (line === "Let Facts be submitted to a candid World.") {
         document.getElementById('output').innerHTML += (allMen + '\n');
         return;
     }
@@ -49,12 +50,17 @@ function run(line) {
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementsByTagName('button')[0].onclick = function () {
         document.getElementById('error').innerHTML = '';
-        sentences = document.getElementsByTagName('textArea')[0].value.split(".").map(element => element.replace(/\n/g,''));
-        if (!sentences.some(function(element) {return /^These united Colonies are,? and of Right ought to be,? Free and Independent States$/.test(element)})) throwError("Error: No declaration that these united Colonies are Free and Independent States");
-        if (!/^The unanimous Declaration of the (zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen) united States? of America/.test(sentences[0])) throwError("Error: Invalid declaration of 'independence'");
-        for(var programCounter = 1; programCounter < sentences.length; programCounter++) {
-            console.log(programCounter);
-            run(sentences[programCounter]);
+        sentences = document.getElementsByTagName('textArea')[0].value.split("\n").map(element => element.replace(/\n/g,''));
+        if (!sentences.some(function(element) {return /^These united Colonies are,? and of Right ought to be,? Free and Independent States.$/.test(element)})) throwError("Error: No declaration that these united Colonies are Free and Independent States");
+        if (!/^The unanimous Declaration of the (zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen) united States? of America./.test(sentences[0])) throwError("Error: Invalid declaration of 'independence'");
+        var introduction = sentences.indexOf("Introduction") || null;
+        var preamble = sentences.indexOf("Preamble") || null;
+        var indictment = sentences.indexOf("Indictment") || null;
+        var denunciation = sentences.indexOf("Denunciation") || null;
+        var conclusion = sentences.indexOf("Conclusion") || null;
+        var programCounter = 1;
+        while (programCounter < sentences.length) {
+            run(sentences[programCounter++]);
             if (endFlag) return;
         };
     }
