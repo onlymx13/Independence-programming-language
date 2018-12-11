@@ -53,11 +53,11 @@ document.addEventListener('DOMContentLoaded', function () {
         sentences = document.getElementsByTagName('textArea')[0].value.split("\n").map(element => element.replace(/\n/g,''));
         if (!sentences.some(function(element) {return /^These united Colonies are,? and of Right ought to be,? Free and Independent States.$/.test(element)})) throwError("Error: No declaration that these united Colonies are Free and Independent States");
         if (!/^The unanimous Declaration of the (zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen) united States? of America./.test(sentences[0])) throwError("Error: Invalid declaration of 'independence'");
-        var introduction = sentences.indexOf("Introduction") || null;
-        var preamble = sentences.indexOf("Preamble") || null;
-        var indictment = sentences.indexOf("Indictment") || null;
-        var denunciation = sentences.indexOf("Denunciation") || null;
-        var conclusion = sentences.indexOf("Conclusion") || null;
+        var introduction = sentences.indexOf("Introduction"); //these vars will be -1 if it's not in there
+        var preamble = sentences.indexOf("Preamble");
+        var indictment = sentences.indexOf("Indictment");
+        var denunciation = sentences.indexOf("Denunciation");
+        var conclusion = sentences.indexOf("Conclusion");
         var programCounter = 1;
         while (programCounter < sentences.length) {
             run(sentences[programCounter++]);
