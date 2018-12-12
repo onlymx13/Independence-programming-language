@@ -39,16 +39,16 @@ function constant(number) {
 function run(line) {
     if (!line) return;
     if (/^Introduction|Preamble|Indictment|Denunciation|Conclusion$/.test(line)) return;
-    if (/^These united Colonies are,? and of Right ought to be,? Free and Independent States.$/.test(line)) return document.getElementById('output').innerHTML += ('done\n');
+    if (/^These united Colonies are,? and of Right ought to be,? Free and Independent States.$/.test(line)) return;
     if (/^We hold these [tT]ruths to be self-evident: that /.test(line)) {
        if (line.slice(46, 88) === "all men are endowed by their Creator with ") return allMen = constant(line.slice(88));
        if (line.slice(46,107) === "the People of Pennsylvania are endowed by their Creator with ") return Pennsylvania = constant(line.slice(107));
     }
     if (line === "Let Facts be submitted to a candid World.") {
-       return document.getElementById('output').innerHTML += (allMen + '<br />');
+       return document.getElementById('output').innerHTML += (allMen);
     }
     if (line === "We should declare the causes which impel us to the separation.") {
-       return document.getElementById('output').innerHTML += (String.fromCharCode(allMen) + '<br />');
+       return document.getElementById('output').innerHTML += (String.fromCharCode(allMen));
     }
     return throwError('Error: Syntax at line ' + (sentences.indexOf(line) + 1));
 }
