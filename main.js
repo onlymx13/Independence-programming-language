@@ -3,6 +3,8 @@ var sentences;
 var allMen;
 var Pennsylvania;
 var endFlag;
+var programCounter;
+var introduction, preamble, indictment, denunciation, conclusion;
 function throwError(error) {
     document.getElementById('error').innerHTML = error;
     return endFlag = true;
@@ -50,6 +52,11 @@ function run(line) {
     if (line === "We should declare the causes which impel us to the separation.") {
        return document.getElementById('output').innerHTML += (String.fromCharCode(allMen));
     }
+    if (line === "See the Introduction to this Document." && introduction !== -1) return programCounter = introduction;
+    if (line === "See the Preamble to this Document." && preamble !== -1) return programCounter = preamble;
+    if (line === "See the Indictment to this Document." && indictment !== -1) return programCounter = indictment;
+    if (line === "See the Denunciation to this Document." && denunciation !== -1) return programCounter = denunciation;
+    if (line === "See the Conclusion to this Document." && conclusion !== -1) return programCounter = conclusion;
     return throwError('Error: Syntax at line ' + (sentences.indexOf(line) + 1));
 }
 document.addEventListener('DOMContentLoaded', function () {
@@ -67,12 +74,12 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!sentences.some(function(element) {return /^These united Colonies are,? and of Right ought to be,? Free and Independent States.$/.test(element)})) throwError("Error: No declaration that these united Colonies are Free and Independent States");
         if (!/^The unanimous Declaration of the (zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen) united States? of America./.test(sentences[0])) throwError("Error: Invalid declaration of 'independence'");
         endFlag = false;
-        var introduction = sentences.indexOf("Introduction"); //these vars will be -1 if it's not in there
-        var preamble = sentences.indexOf("Preamble");
-        var indictment = sentences.indexOf("Indictment");
-        var denunciation = sentences.indexOf("Denunciation");
-        var conclusion = sentences.indexOf("Conclusion");
-        var programCounter = 1;
+        introduction = sentences.indexOf("Introduction"); //these vars will be -1 if it's not in there
+        preamble = sentences.indexOf("Preamble");
+        indictment = sentences.indexOf("Indictment");
+        denunciation = sentences.indexOf("Denunciation");
+        conclusion = sentences.indexOf("Conclusion");
+        programCounter = 1;
         function count () {
             run(sentences[programCounter++]);
             if (programCounter < sentences.length && !endFlag) requestAnimationFrame(count);
