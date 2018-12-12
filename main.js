@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var programCounter = 1;
         function count () {
             run(sentences[programCounter++]);
-            if (programCounter >= sentences.length && !endFlag) requestAnimationFrame(count);
+            if (programCounter < sentences.length && !endFlag) requestAnimationFrame(count);
         }
         requestAnimationFrame (count);
     }
