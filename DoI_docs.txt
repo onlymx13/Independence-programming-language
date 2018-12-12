@@ -22,7 +22,7 @@ Preamble
 We hold these Truths to be self-evident: that all men are endowed by their Creator with certain unalienable Rights, such as great Property, great Property, good Property, Property, and Life.
 We should declare the causes which impel us to the separation. //print o
 Indictment
-We hold these Truths to be self-evident: that all men are endowed by their Creator with certain unalienable Rights, such as great Property, good Property, Property, great Liberty, and the Pursuit of Happiness.
+We hold these Truths to be self-evident: that all men are endowed by their Creator with certain unalienable Rights, such as great Property, good Property, Property, Liberty, and Life.
 We should declare the causes which impel us to the separation. //print I
 These united Colonies are, and of Right ought to be Free and Independent States. //end program
 
