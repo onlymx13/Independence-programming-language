@@ -74,9 +74,8 @@ document.addEventListener('DOMContentLoaded', function () {
         var conclusion = sentences.indexOf("Conclusion");
         var programCounter = 1;
         function count () {
-        if (programCounter >= sentences.length) requestAnimationFrame(count);
             run(sentences[programCounter++]);
-            if (endFlag) break;		
+            if (programCounter >= sentences.length && !endFlag) requestAnimationFrame(count);
         }
         requestAnimationFrame (count);
     }
