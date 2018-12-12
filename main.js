@@ -73,9 +73,11 @@ document.addEventListener('DOMContentLoaded', function () {
         var denunciation = sentences.indexOf("Denunciation");
         var conclusion = sentences.indexOf("Conclusion");
         var programCounter = 1;
-        while (programCounter < sentences.length) {
+        function count () {
+        if (programCounter >= sentences.length) requestAnimationFrame(count);
             run(sentences[programCounter++]);
-            if (endFlag) break;
-        };
+            if (endFlag) break;		
+        }
+        requestAnimationFrame (count);
     }
 });
