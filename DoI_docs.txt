@@ -13,12 +13,17 @@ Print: To print the contents of the accumulator, “let Facts be submitted to a 
 Input: To receive input, use “We, therefore, appeal to the Supreme Judge of the world for the rectitude of our intentions.”
 End: To end the program, state “These united Colonies are, and of Right ought to be Free and Independent States.”
 The comments here are for reference, comments do not really exist! Example code (prints DoI)
+
 The unanimous Declaration of the zero united States of America. //set up program with 0 local variables
 Introduction //label
-We hold these Truths to be self-evident: that all men are endowed by their Creator with certain unalienable Rights, such as great Property, good Property, and great Liberty. We should declare the causes which impel us to the separation. //set all men to D, print D
+We hold these Truths to be self-evident: that all men are endowed by their Creator with certain unalienable Rights, such as great Property, good Property, and great Liberty.
+We should declare the causes which impel us to the separation. //set all men to D, print D
 Preamble
-We hold these Truths to be self-evident: that all men are endowed by their Creator with certain unalienable Rights, such as great Property, great Property, good Property, Property, and Life. We should declare the causes which impel us to the separation. //print o
-Indictment We hold these Truths to be self-evident: that all men are endowed by their Creator with certain unalienable Rights, such as great Property, good Property, Property, great Liberty, and the Pursuit of Happiness. We should declare the causes which impel us to the separation. //print I
+We hold these Truths to be self-evident: that all men are endowed by their Creator with certain unalienable Rights, such as great Property, great Property, good Property, Property, and Life.
+We should declare the causes which impel us to the separation. //print o
+Indictment
+We hold these Truths to be self-evident: that all men are endowed by their Creator with certain unalienable Rights, such as great Property, good Property, Property, great Liberty, and the Pursuit of Happiness.
+We should declare the causes which impel us to the separation. //print I
 These united Colonies are, and of Right ought to be Free and Independent States. //end program
 
 
