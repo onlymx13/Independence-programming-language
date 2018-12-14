@@ -57,6 +57,11 @@ function run(line) {
     if (line === "See the Indictment to this Document." && indictment !== -1) return programCounter = indictment;
     if (line === "See the Denunciation to this Document." && denunciation !== -1) return programCounter = denunciation;
     if (line === "See the Conclusion to this Document." && conclusion !== -1) return programCounter = conclusion;
+    if (line === "We, therefore, appeal to the Supreme Judge of the world for the rectitude of our intentions.") {
+        try {allMen = input[inputIndex++];};
+        catch {throwError("Error: all input used at line " + (sentences.indexOf(line) + 1));};
+        finally {return;};
+    }
     return throwError('Error: Syntax at line ' + (sentences.indexOf(line) + 1));
 }
 document.addEventListener('DOMContentLoaded', function () {
@@ -64,6 +69,8 @@ document.addEventListener('DOMContentLoaded', function () {
         var allMen = 0;
         var Pennsylvania = 0;
         document.getElementById('error').innerHTML = '';
+        var input = document.getElementById('input').split(',');
+        var inputIndex = 0;
         sentences = document.getElementsByTagName('textArea')[0].value.split("\n").map(element => element.replace(/\n/g,''));
         sentences.forEach(function(sentence, index) {
             if (sentence.indexOf('/\/') !== -1) sentences[index] = sentence.slice(0, sentence.indexOf('/\/'));
