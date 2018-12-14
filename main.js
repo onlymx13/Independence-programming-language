@@ -58,9 +58,15 @@ function run(line) {
     if (line === "See the Denunciation to this Document." && denunciation !== -1) return programCounter = denunciation;
     if (line === "See the Conclusion to this Document." && conclusion !== -1) return programCounter = conclusion;
     if (line === "We, therefore, appeal to the Supreme Judge of the world for the rectitude of our intentions.") {
-        try {allMen = input[inputIndex++];};
-        catch {throwError("Error: all input used at line " + (sentences.indexOf(line) + 1));};
-        finally {return;};
+        try {
+            allMen = input[inputIndex++];
+        }
+        catch (err) {
+            throwError("Error: all input used at line " + (sentences.indexOf(line) + 1));
+        }
+        finally {
+            return;
+        }
     }
     return throwError('Error: Syntax at line ' + (sentences.indexOf(line) + 1));
 }
