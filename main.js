@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var allMen = 0;
         var Pennsylvania = 0;
         document.getElementById('error').innerHTML = '';
-        var input = document.getElementById('input').split(',');
+        var input = document.getElementById('input').value.split(',');
         var inputIndex = 0;
         sentences = document.getElementsByTagName('textArea')[0].value.split("\n").map(element => element.replace(/\n/g,''));
         sentences.forEach(function(sentence, index) {
