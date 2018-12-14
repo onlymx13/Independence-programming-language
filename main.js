@@ -1,3 +1,4 @@
+try {
 'use strict';
 var sentences;
 var allMen;
@@ -100,3 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
         requestAnimationFrame (count);
     }
 });
+}
+catch (err) {
+    alert(err);
+}
