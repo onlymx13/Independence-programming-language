@@ -59,7 +59,7 @@ function run(line) {
     if (line === "See the Denunciation to this Document." && denunciation !== -1) return programCounter = denunciation;
     if (line === "See the Conclusion to this Document." && conclusion !== -1) return programCounter = conclusion;
     if (line === "We, therefore, appeal to the Supreme Judge of the world for the rectitude of our intentions.") {
-        if (typeof input[inputIndex++] !== 'undefined') allMen = input[inputIndex];
+        if (typeof input[inputIndex + 1] !== 'undefined') allMen = input[inputIndex++];
         else throwError("Error: all input used at line " + (sentences.indexOf(line) + 1));
         return;
     }
