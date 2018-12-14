@@ -2,6 +2,7 @@
 var sentences;
 var allMen;
 var Pennsylvania;
+var input, inputIndex;
 var endFlag;
 var programCounter;
 var introduction, preamble, indictment, denunciation, conclusion;
@@ -75,8 +76,8 @@ document.addEventListener('DOMContentLoaded', function () {
         var allMen = 0;
         var Pennsylvania = 0;
         document.getElementById('error').innerHTML = '';
-        var input = document.getElementById('input').value.split(',');
-        var inputIndex = 0;
+        input = document.getElementById('input').value.split(',');
+        inputIndex = 0;
         endFlag = false;
         sentences = document.getElementsByTagName('textArea')[0].value.split("\n").map(element => element.replace(/\n/g,''));
         sentences.forEach(function(sentence, index) {
