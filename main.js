@@ -6,6 +6,57 @@ var input, inputIndex;
 var endFlag;
 var programCounter;
 var introduction, preamble, indictment, denunciation, conclusion;
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+function updateURLParameter(url, param, paramVal)
+{
+    var TheAnchor = null;
+    var newAdditionalURL = "";
+    var tempArray = url.split("?");
+    var baseURL = tempArray[0];
+    var additionalURL = tempArray[1];
+    var temp = "";
+
+    if (additionalURL) 
+    {
+        var tmpAnchor = additionalURL.split("#");
+        var TheParams = tmpAnchor[0];
+            TheAnchor = tmpAnchor[1];
+        if(TheAnchor)
+            additionalURL = TheParams;
+
+        tempArray = additionalURL.split("&");
+
+        for (var i=0; i<tempArray.length; i++)
+        {
+            if(tempArray[i].split('=')[0] != param)
+            {
+                newAdditionalURL += temp + tempArray[i];
+                temp = "&";
+            }
+        }        
+    }
+    else
+    {
+        var tmpAnchor = baseURL.split("#");
+        var TheParams = tmpAnchor[0];
+            TheAnchor  = tmpAnchor[1];
+
+        if(TheParams)
+            baseURL = TheParams;
+    }
+
+    if(TheAnchor)
+        paramVal += "#" + TheAnchor;
+
+    var rows_txt = temp + "" + param + "=" + paramVal;
+    return baseURL + "?" + newAdditionalURL + rows_txt;
+}
 function throwError(error) {
     document.getElementById('error').innerHTML = error;
     return endFlag = true;
@@ -66,6 +117,7 @@ function run(line) {
     return throwError('Error: Syntax at line ' + (sentences.indexOf(line) + 1));
 }
 document.addEventListener('DOMContentLoaded', function () {
+    if (getUrlVars()["text"] != null) document.getElementsByTagName('textArea')[0].value = getUrlVars()["text"];
     document.getElementsByTagName('button')[0].onclick = function () {
         var allMen = 0;
         var Pennsylvania = 0;
@@ -88,6 +140,7 @@ document.addEventListener('DOMContentLoaded', function () {
         denunciation = sentences.indexOf("Denunciation");
         conclusion = sentences.indexOf("Conclusion");
         programCounter = 1;
+        window.location.href = updateURLParameter(window.location.href, 'text', document.getElementsByTagName('textArea')[0].value)
         function count () {
             run(sentences[programCounter++]);
             if (programCounter < sentences.length && !endFlag) requestAnimationFrame(count);
