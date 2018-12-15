@@ -117,7 +117,7 @@ function run(line) {
     return throwError('Error: Syntax at line ' + (sentences.indexOf(line) + 1));
 }
 document.addEventListener('DOMContentLoaded', function () {
-    if (getUrlVars()["text"] != null) document.getElementsByTagName('textArea')[0].value = getUrlVars()["text"];
+    if (getUrlVars()["text"] != null) document.getElementsByTagName('textArea')[0].value = decodeURIComponent(getUrlVars()["text"]);
     document.getElementsByTagName('button')[0].onclick = function () {
         var allMen = 0;
         var Pennsylvania = 0;
