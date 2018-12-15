@@ -108,43 +108,45 @@ function run(line) {
 	}
 	return throwError('Error: Syntax at line ' + (sentences.indexOf(line) + 1));
 }
-function execute () {
-    	var allMen = 0;
-		var Pennsylvania = 0;
-		document.getElementById('error').innerHTML = '';
-		input = document.getElementById('input').value.split(',');
-		inputIndex = 0;
-		endFlag = false;
-		sentences = document.getElementsByTagName('textArea')[0].value.split("\n").map(element => element.replace(/\n/g, ''));
-		sentences.forEach(function(sentence, index) {
-			if (sentence.indexOf('/\/') !== -1) sentences[index] = sentence.slice(0, sentence.indexOf('/\/'));
-			while (sentences[index].charAt(sentences[index].length - 1) === ' ') {
-				sentences[index] = sentences[index].slice(0, -1);
-			}
-		});
-		if (!sentences.some(function(element) {
-				return /^These united Colonies are,? and of Right ought to be,? Free and Independent States.$/.test(element)
-			})) throwError("Error: No declaration that these united Colonies are Free and Independent States");
-		if (!/^The unanimous Declaration of the (zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen) united States? of America./.test(sentences[0])) throwError("Error: Invalid declaration of 'independence'");
-		introduction = sentences.indexOf("Introduction"); //these vars will be -1 if it's not in there
-		preamble = sentences.indexOf("Preamble");
-		indictment = sentences.indexOf("Indictment");
-		denunciation = sentences.indexOf("Denunciation");
-		conclusion = sentences.indexOf("Conclusion");
-		programCounter = 1;
-		if (encodeURIComponent(document.getElementsByTagName('textArea')[0].value) !== decodeURIComponent(getUrlVars()["text"])) {
-			window.location.href = updateURLParameter(window.location.href, 'text', encodeURIComponent(document.getElementsByTagName('textArea')[0].value));
-        }
-		function count() {
-			run(sentences[programCounter++]);
-			if (programCounter < sentences.length && !endFlag) requestAnimationFrame(count);
+
+function execute() {
+	var allMen = 0;
+	var Pennsylvania = 0;
+	document.getElementById('error').innerHTML = '';
+	input = document.getElementById('input').value.split(',');
+	inputIndex = 0;
+	endFlag = false;
+	sentences = document.getElementsByTagName('textArea')[0].value.split("\n").map(element => element.replace(/\n/g, ''));
+	sentences.forEach(function(sentence, index) {
+		if (sentence.indexOf('/\/') !== -1) sentences[index] = sentence.slice(0, sentence.indexOf('/\/'));
+		while (sentences[index].charAt(sentences[index].length - 1) === ' ') {
+			sentences[index] = sentences[index].slice(0, -1);
 		}
-		if (!endFlag) requestAnimationFrame(count);
-	
+	});
+	if (!sentences.some(function(element) {
+			return /^These united Colonies are,? and of Right ought to be,? Free and Independent States.$/.test(element)
+		})) throwError("Error: No declaration that these united Colonies are Free and Independent States");
+	if (!/^The unanimous Declaration of the (zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen) united States? of America./.test(sentences[0])) throwError("Error: Invalid declaration of 'independence'");
+	introduction = sentences.indexOf("Introduction"); //these vars will be -1 if it's not in there
+	preamble = sentences.indexOf("Preamble");
+	indictment = sentences.indexOf("Indictment");
+	denunciation = sentences.indexOf("Denunciation");
+	conclusion = sentences.indexOf("Conclusion");
+	programCounter = 1;
+	if (encodeURIComponent(document.getElementsByTagName('textArea')[0].value) !== decodeURIComponent(getUrlVars()["text"])) {
+		window.location.href = updateURLParameter(window.location.href, 'text', encodeURIComponent(document.getElementsByTagName('textArea')[0].value));
+	}
+
+	function count() {
+		run(sentences[programCounter++]);
+		if (programCounter < sentences.length && !endFlag) requestAnimationFrame(count);
+	}
+	if (!endFlag) requestAnimationFrame(count);
 }
 document.addEventListener('DOMContentLoaded', function() {
 	if (getUrlVars()["text"] != null) {
-        document.getElementsByTagName('textArea')[0].value = decodeURIComponent(getUrlVars()["text"]);
-        execute();
-    }
+		document.getElementsByTagName('textArea')[0].value = decodeURIComponent(getUrlVars()["text"]);
+		execute();
+	}
 	document.getElementsByTagName('button')[0].onclick = execute;
+}
