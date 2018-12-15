@@ -92,6 +92,6 @@ document.addEventListener('DOMContentLoaded', function () {
             run(sentences[programCounter++]);
             if (programCounter < sentences.length && !endFlag) requestAnimationFrame(count);
         }
-        requestAnimationFrame (count);
+        if (!endFlag) requestAnimationFrame(count);
     }
 });
