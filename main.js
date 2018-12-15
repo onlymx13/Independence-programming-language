@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function () {
         denunciation = sentences.indexOf("Denunciation");
         conclusion = sentences.indexOf("Conclusion");
         programCounter = 1;
-        window.location.href = updateURLParameter(window.location.href, 'text', document.getElementsByTagName('textArea')[0].value)
+        window.location.href = updateURLParameter(window.location.href, 'text', encodeURIComponent(document.getElementsByTagName('textArea')[0].value))
         function count () {
             run(sentences[programCounter++]);
             if (programCounter < sentences.length && !endFlag) requestAnimationFrame(count);
