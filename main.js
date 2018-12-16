@@ -149,4 +149,4 @@ document.addEventListener('DOMContentLoaded', function() {
 		execute();
 	}
 	document.getElementsByTagName('button')[0].onclick = execute;
-}
+});
