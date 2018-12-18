@@ -133,7 +133,7 @@ function execute() {
 	denunciation = sentences.indexOf("Denunciation");
 	conclusion = sentences.indexOf("Conclusion");
 	programCounter = 1;
-	if (encodeURIComponent(document.getElementsByTagName('textArea')[0].value) !== decodeURIComponent(getUrlVars()["text"])) {
+	if (encodeURIComponent(document.getElementsByTagName('textArea')[0].value) !== getUrlVars()["text"]) {
 		window.location.href = updateURLParameter(window.location.href, 'text', encodeURIComponent(document.getElementsByTagName('textArea')[0].value));
 	}
 
