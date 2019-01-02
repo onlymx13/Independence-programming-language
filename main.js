@@ -120,7 +120,7 @@ function run(line) {
 	if (line === "See the Denunciation to this Document." && denunciation !== -1) return programCounter = denunciation;
 	if (line === "See the Conclusion to this Document." && conclusion !== -1) return programCounter = conclusion;
 	if (/We, therefore, appeal to the Supreme Judge of the [wW]orld for the rectitude of our intentions./.test(line)) {
-		if (typeof input[inputIndex] !== 'undefined') allMen = String.toCharCode(input[inputIndex++]);
+		if (typeof input[inputIndex] !== 'undefined') allMen = input[inputIndex++].charCodeAt(0);
 		else throwError("Error: all input used at line " + (sentences.indexOf(line) + 1));
 		return;
 	}
