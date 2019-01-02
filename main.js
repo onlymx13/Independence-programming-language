@@ -102,7 +102,7 @@ function run(line) {
 		return document.getElementById('output').innerHTML += (String.fromCharCode(allMen));
 	}
 	if (/^When in the Course of human Events /.test(line)) {
-		if (constant('certain unalienable Rights, such as ' + line.slice(35,line.search(/,(?!.*,)/))) {
+		if (constant('certain unalienable Rights, such as ' + line.slice(35,line.search(/,(?!.*,)/)))) {
 			try {
 				return run(line.slice(line.search(/,(?!.*,)/) + 2).charAt(0).toUpperCase() + line.slice(line.search(/,(?!.*,)/) + 2).slice(1)); // the 2 are comma and space
 			}
