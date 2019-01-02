@@ -75,6 +75,9 @@ function constant(number) {
 	number = number.replace(/good /g, "2*");
 	number = number.replace(/great /g, "4*");
 	number = number.replace(/the/g, "");
+	number = number.replace(/ are created Equal to /g, "===");
+	number = number.replace(/ are created Greater than /g, ">");
+	number = number.replace(/ are created Less than /g, "<");
 	try {
 		return Function("return " + number).call(this);
 	} catch (err) {
@@ -85,7 +88,7 @@ function constant(number) {
 function run(line) {
 	if (!line) return;
 	if (/^Introduction|Preamble|Indictment|Denunciation|Conclusion$/.test(line)) return;
-	if (/^These united Colonies are,? and of Right ought to be,? Free and Independent States.$/.test(line)) return;
+	if (/^These united Colonies are, and of Right ought to be,? Free and Independent States.$/.test(line)) return;
 	if (/^We hold these [tT]ruths to be self-evident: that /.test(line)) {
 		if (line.slice(46, 88) === "all men are endowed by their Creator with ") return allMen = constant(line.slice(88));
 		if (line.slice(46, 107) === "the People of Pennsylvania are endowed by their Creator with ") return Pennsylvania = constant(line.slice(107));
@@ -95,6 +98,16 @@ function run(line) {
 	}
 	if (line === "We should declare the causes which impel us to the separation.") {
 		return document.getElementById('output').innerHTML += (String.fromCharCode(allMen));
+	}
+	return throwError('Error: Syntax at l
+	if (/^When in the Course of human Events/.test(line)) {
+		try {
+			return run(line.slice(line.indexOf(/,(?!.*,)/) + 1).charAt(0).toUpperCase() + line.slice(line.indexOf(/,(?!.*,)/) + 1).slice(1));
+		}
+		catch (err) {
+			throwError("Error: Syntax in executed portion of line " + (sentences.indexOf(line) + 1))
+		}
+		return;
 	}
 	if (line === "See the Introduction to this Document." && introduction !== -1) return programCounter = introduction;
 	if (line === "See the Preamble to this Document." && preamble !== -1) return programCounter = preamble;
