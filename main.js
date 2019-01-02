@@ -50,6 +50,7 @@ function updateURLParameter(url, param, paramVal) {
 
 function throwError(error) {
 	document.getElementById('error').innerHTML = error;
+	console.log(error);
 	return endFlag = true;
 }
 
