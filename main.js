@@ -99,7 +99,6 @@ function run(line) {
 	if (line === "We should declare the causes which impel us to the separation.") {
 		return document.getElementById('output').innerHTML += (String.fromCharCode(allMen));
 	}
-	return throwError('Error: Syntax at l
 	if (/^When in the Course of human Events/.test(line)) {
 		try {
 			return run(line.slice(line.indexOf(/,(?!.*,)/) + 1).charAt(0).toUpperCase() + line.slice(line.indexOf(/,(?!.*,)/) + 1).slice(1));
