@@ -112,6 +112,8 @@ function run(line) {
 			finally {
 				return;
 			}
+		} else {
+			return false;
 		}
 	}
 	if (line === "See the Introduction to this Document." && introduction !== -1) return programCounter = introduction;
