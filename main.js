@@ -61,6 +61,7 @@ function constant(number) {
 		return throwError("Error: constant not beginning with 'certain unalienable rights, such as'");
 	}
 	number = number.slice(35);
+	number = number.replace(/certain unalienable Rights, such as/g, '');
 	number = number.replace(/all men/g, 'allMen');
 	number = number.replace(/the People of Pennsylvania/g, 'Pennsylvania');
 	number = number.replace(/Life/g, 1);
@@ -99,14 +100,18 @@ function run(line) {
 	if (line === "We should declare the causes which impel us to the separation.") {
 		return document.getElementById('output').innerHTML += (String.fromCharCode(allMen));
 	}
-	if (/^When in the Course of human Events/.test(line)) {
-		try {
-			return run(line.slice(line.indexOf(/,(?!.*,)/) + 1).charAt(0).toUpperCase() + line.slice(line.indexOf(/,(?!.*,)/) + 1).slice(1));
+	if (/^When in the Course of human Events /.test(line)) {
+		if (constant('certain unalienable Rights, such as ' + line.slice(35,line.search(/,(?!.*,)/))) {
+			try {
+				return run(line.slice(line.search(/,(?!.*,)/) + 2).charAt(0).toUpperCase() + line.slice(line.search(/,(?!.*,)/) + 2).slice(1)); // the 2 are comma and space
+			}
+			catch (err) {
+				return throwError("Error: Syntax in executed portion of line " + (sentences.indexOf(line) + 1) + ". Note that lines with commas are currently not supported.");
+			}
+			finally {
+				return;
+			}
 		}
-		catch (err) {
-			throwError("Error: Syntax in executed portion of line " + (sentences.indexOf(line) + 1))
-		}
-		return;
 	}
 	if (line === "See the Introduction to this Document." && introduction !== -1) return programCounter = introduction;
 	if (line === "See the Preamble to this Document." && preamble !== -1) return programCounter = preamble;
