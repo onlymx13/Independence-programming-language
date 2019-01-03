@@ -133,7 +133,7 @@ function execute() {
 	var allMen = 0;
 	var Pennsylvania = 0;
 	document.getElementById('error').innerHTML = '';
-	input = /[0-9]*/.test(document.getElementById('input').value) ? document.getElementById('input').value.split(',') : document.getElementById('input').value.split('');
+	input = /^[0-9]+$/.test(document.getElementById('input').value) ? document.getElementById('input').value.split(/,|\n/) : document.getElementById('input').value.split('');
 	inputIndex = 0;
 	endFlag = false;
 	sentences = document.getElementsByTagName('textArea')[0].value.split("\n").map(element => element.replace(/\n/g, ''));
