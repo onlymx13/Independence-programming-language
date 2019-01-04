@@ -63,6 +63,7 @@ function constant(number) {
 	}
 	number = number.slice(35);
 	number = number.replace(/certain unalienable Rights, such as/g, '');
+	number = number.replace(/the remaining Issue of /g, 'allMen%');
 	number = number.replace(/all men/g, 'allMen');
 	number = number.replace(/the People of Pennsylvania/g, 'Pennsylvania');
 	number = number.replace(/Life/g, 1);
