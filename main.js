@@ -78,9 +78,9 @@ function constant(number) {
 	number = number.replace(/good /g, "2*");
 	number = number.replace(/great /g, "4*");
 	number = number.replace(/the/g, "");
-	number = number.replace(/[(are)(is)] created [eE]qual to/g, "===");
-	number = number.replace(/[(are)(is)] created [gG]reater than/g, ">");
-	number = number.replace(/[(are)(is)] created [lL]ess than/g, "<");
+	number = number.replace(/(are|is) created [eE]qual to/g, "===");
+	number = number.replace(/(are|is) created [gG]reater than/g, ">");
+	number = number.replace(/(are|is) created [lL]ess than/g, "<");
 	try {
 		return Function("return " + number).call(this);
 	} catch (err) {
