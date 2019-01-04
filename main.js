@@ -158,7 +158,9 @@ function execute() {
 	}
 
 	function count() {
-		run(sentences[programCounter++]);
+		for (var j=0; j<4; j++) {
+			if (programCounter < sentences.length && !endFlag) run(sentences[programCounter++]);
+		}
 		if (programCounter < sentences.length && !endFlag) requestAnimationFrame(count);
 	}
 	if (!endFlag) requestAnimationFrame(count);
