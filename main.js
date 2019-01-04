@@ -158,7 +158,7 @@ function execute() {
 	}
 
 	function count() {
-		for (var j=0; j<4; j++) {
+		for (var j=0; j<9; j++) {
 			if (programCounter < sentences.length && !endFlag) run(sentences[programCounter++]);
 		}
 		if (programCounter < sentences.length && !endFlag) requestAnimationFrame(count);
