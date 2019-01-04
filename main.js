@@ -117,11 +117,11 @@ function run(line) {
 			return false;
 		}
 	}
-	if (line === "See the Introduction to this Document." && introduction !== -1) return programCounter = introduction;
-	if (line === "See the Preamble to this Document." && preamble !== -1) return programCounter = preamble;
-	if (line === "See the Indictment to this Document." && indictment !== -1) return programCounter = indictment;
-	if (line === "See the Denunciation to this Document." && denunciation !== -1) return programCounter = denunciation;
-	if (line === "See the Conclusion to this Document." && conclusion !== -1) return programCounter = conclusion;
+	if (/See the Introduction (to|of) this Document\./.test(line) && introduction !== -1) return programCounter = introduction;
+	if (/See the Preamble (to|of) this Document\./.test(line) && preamble !== -1) return programCounter = preamble;
+	if (/See the Indictment (to|of) this Document\./.test(line) && indictment !== -1) return programCounter = indictment;
+	if (/See the Denunciation (to|of) this Document\./.test(line) && denunciation !== -1) return programCounter = denunciation;
+	if (/See the Conclusion (to|of) this Document\./.test(line) && conclusion !== -1) return programCounter = conclusion;
 	if (/We, therefore, appeal to the Supreme Judge of the [wW]orld for the rectitude of our intentions./.test(line)) {
 		if (typeof input[inputIndex] !== 'undefined') allMen = input[inputIndex++].charCodeAt(0);
 		else throwError("Error: all input used at line " + (sentences.indexOf(line) + 1));
