@@ -39,7 +39,7 @@ We hold these Truths to be self-evident: that the People of Pennsylvania are end
 Indictment
 We hold these Truths to be self-evident: that the People of Pennsylvania are endowed by their Creator with certain unalienable Rights, such as the People of Pennsylvania and Life. //increment Pennsylvania
 When in the Course of human Events all men are created equal to the People of Pennsylvania, see the Denunciation of this Document. //if number=divisor and was never divided, it is prime, so go to print label
-When in the Course of human Events the remaining Issue of the People of Pennsylvania is created equal to certain unalienable Rights, such as Life and lack of Life, see the Preamble to this Document. // if all men mod Pennsylvania == 0, go to preamble and try another number, ours was composite
+When in the Course of human Events the remaining Issue of the People of Pennsylvania is created Equal to certain unalienable Rights, such as Life and lack of Life, see the Preamble to this Document. // if all men mod Pennsylvania == 0, go to preamble and try another number, ours was composite
 See the Indictment to this Document. //continue loop
 Denunciation
 Let Facts be submitted to a candid World. //print our prime
