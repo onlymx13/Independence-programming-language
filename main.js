@@ -160,6 +160,7 @@ function execute() {
 	if (encodeURIComponent(document.getElementsById('input') !== getUrlVars()["input"]) {
 		window.location.href = updateURLParameter(window.location.href, 'input', encodeURIComponent(document.getElementsById('input').value));
 	}
+}
 
 	function count() {
 		for (var j=0; j<9; j++) {
