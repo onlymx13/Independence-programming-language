@@ -155,8 +155,8 @@ function execute() {
     if (encodeURIComponent(document.getElementsByTagName('textArea')[0].value) !== getUrlVars()["text"]) {
         window.location.href = updateURLParameter(window.location.href, 'text', encodeURIComponent(document.getElementsByTagName('textArea')[0].value));
     }
-    if (encodeURIComponent(document.getElementsById('input') !== getUrlVars()["input"])) {
-        window.location.href = updateURLParameter(window.location.href, 'input', encodeURIComponent(document.getElementsById('input').value));
+    if (encodeURIComponent(document.getElementById('input') !== getUrlVars()["input"])) {
+        window.location.href = updateURLParameter(window.location.href, 'input', encodeURIComponent(document.getElementById('input').value));
     }
 
     function count() {
@@ -168,7 +168,7 @@ function execute() {
     if (!endFlag) requestAnimationFrame(count);
 }
 document.addEventListener('DOMContentLoaded', function() {
-    if (getUrlVars()["input"] != null) document.getElementsById('input').value = decodeURIComponent(getUrlVars()["input"]);
+    if (getUrlVars()["input"] != null) document.getElementById('input').value = decodeURIComponent(getUrlVars()["input"]);
     if (getUrlVars()["text"] != null) {
         document.getElementsByTagName('textArea')[0].value = decodeURIComponent(getUrlVars()["text"]);
         execute();
