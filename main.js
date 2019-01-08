@@ -158,19 +158,20 @@ function execute() {
     if (encodeURIComponent(document.getElementsById('input') !== getUrlVars()["input"])) {
         window.location.href = updateURLParameter(window.location.href, 'input', encodeURIComponent(document.getElementsById('input').value));
     }
-        function count() {
-            for (var j = 0; j < 9; j++) {
-                if (programCounter < sentences.length && !endFlag) run(sentences[programCounter++]);
-            }
-            if (programCounter < sentences.length && !endFlag) requestAnimationFrame(count);
+
+    function count() {
+        for (var j = 0; j < 9; j++) {
+            if (programCounter < sentences.length && !endFlag) run(sentences[programCounter++]);
         }
-        if (!endFlag) requestAnimationFrame(count);
+        if (programCounter < sentences.length && !endFlag) requestAnimationFrame(count);
     }
-    document.addEventListener('DOMContentLoaded', function() {
-        if (getUrlVars()["input"] != null) document.getElementsById('input').value = decodeURIComponent(getUrlVars()["input"]);
-        if (getUrlVars()["text"] != null) {
-            document.getElementsByTagName('textArea')[0].value = decodeURIComponent(getUrlVars()["text"]);
-            execute();
-        }
-        document.getElementsByTagName('button')[0].onclick = execute;
-    });
+    if (!endFlag) requestAnimationFrame(count);
+}
+document.addEventListener('DOMContentLoaded', function() {
+    if (getUrlVars()["input"] != null) document.getElementsById('input').value = decodeURIComponent(getUrlVars()["input"]);
+    if (getUrlVars()["text"] != null) {
+        document.getElementsByTagName('textArea')[0].value = decodeURIComponent(getUrlVars()["text"]);
+        execute();
+    }
+    document.getElementsByTagName('button')[0].onclick = execute;
+});
