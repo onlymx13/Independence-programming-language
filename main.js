@@ -152,13 +152,9 @@ function execute() {
     denunciation = sentences.indexOf("Denunciation");
     conclusion = sentences.indexOf("Conclusion");
     programCounter = 1;
-    if (encodeURIComponent(document.getElementsByTagName('textArea')[0].value) !== getUrlVars()["text"]) {
-        window.location.href = updateURLParameter(window.location.href, 'text', encodeURIComponent(document.getElementsByTagName('textArea')[0].value));
+    if (encodeURIComponent(document.getElementsByTagName('textArea')[0].value) !== getUrlVars()["text"] || encodeURIComponent(document.getElementById('input') !== getUrlVars()["input"])) {
+        window.location.href = updateURLParameter(updateURLParameter(window.location.href, 'text', encodeURIComponent(document.getElementsByTagName('textArea')[0].value)), 'input', encodeURIComponent(document.getElementById('input').value));
     }
-    if (encodeURIComponent(document.getElementById('input') !== getUrlVars()["input"])) {
-        window.location.href = updateURLParameter(window.location.href, 'input', encodeURIComponent(document.getElementById('input').value));
-    }
-
     function count() {
         for (var j = 0; j < 9; j++) {
             if (programCounter < sentences.length && !endFlag) run(sentences[programCounter++]);
