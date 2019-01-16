@@ -152,7 +152,7 @@ function execute() {
     denunciation = sentences.indexOf("Denunciation");
     conclusion = sentences.indexOf("Conclusion");
     programCounter = 1;
-    if (encodeURIComponent(document.getElementsByTagName('textArea')[0].value) !== getUrlVars()["text"] || encodeURIComponent(document.getElementById('input') !== getUrlVars()["input"])) {
+    if (encodeURIComponent(document.getElementsByTagName('textArea')[0].value) !== decodeURIComponent(getUrlVars()["text"]) || encodeURIComponent(document.getElementById('input') !== decodeURIComponent(getUrlVars()["input"]))) {
         window.location.href = updateURLParameter(updateURLParameter(window.location.href, 'text', encodeURIComponent(document.getElementsByTagName('textArea')[0].value)), 'input', encodeURIComponent(document.getElementById('input').value));
     }
     function count() {
